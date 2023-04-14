@@ -8,18 +8,22 @@ Bit.lyなどURLを短縮させるWebサービスがあるが,Webブラウザか�
 CLIで動作させ,オプションによって複数のURLを一括で変換できるようにする.
 
 ## Usage
+引数にURLがある場合、それをURLを受け取る.
+引数がない場合、標準入出力でURLを受け取る.
+
 --help
+ヘルプの表示
 
 -i
-ファイル内のURLを変換
+指定したファイル名を受け取る
 
 -o
-指定したファイル名で出力
+txtファイルで出力.　引数はファイル名
 
 urakil
 
-input:
+URLを入力してください input:
 https://www.kyoto-su.ac.jp/entrance/index-ksu.html
 
-output:
+URLを短縮しました output:
 https://www.kyoto-su.ac.jp
