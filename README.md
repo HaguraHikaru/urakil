@@ -22,9 +22,9 @@ CLIで動作させ,オプションによって複数のURLを一括で変換で�
           ヘルプの表示  
 ## インストール方法 
 GitHubからコードをダウンロードする
-      git clone git@github.com:HaguraHikaru/urakil.git  
+'git clone git@github.com:HaguraHikaru/urakil.git'
 ダウンロードしたファイルurakilに移動しビルドコマンドを入力
-      Makefile  
+'Makefile'
 
 ## プロジェクトについて
   開発者 HaguraHikaru   
