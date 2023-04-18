@@ -8,6 +8,8 @@ Bit.lyなどURLを短縮させるWebサービスがあるが,Webブラウザか�
 CLIで動作させ,オプションによって複数のURLを一括で変換できるようにする.
 
 ## 使い方
+    urakil 0.00
+    URLを短縮させる
 
     USAGE:  
         urakil [OPTIONS] [FILE]   
@@ -19,7 +21,9 @@ CLIで動作させ,オプションによって複数のURLを一括で変換で�
       --help  
           ヘルプの表示  
 ## インストール方法 
-      git clone git@github.com:HaguraHikaru/urakil.git   
+GitHubからコードをダウンロードする
+      git clone git@github.com:HaguraHikaru/urakil.git  
+ダウンロードしたファイルurakilに移動しビルドコマンドを入力
       Makefile  
 
 ## プロジェクトについて
