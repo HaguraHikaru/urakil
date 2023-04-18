@@ -36,6 +36,6 @@ GitHubからコードをダウンロードする
   開発者 HaguraHikaru   
   ライセンス MIT LICENSE   
   アイコン icon.svg  
-   <img src="{icon.svg}" width="50%" />  
+   <img src="icon.svg" width="50%" />  
   名前の由来 Hikaruを逆順にし, 最後をlに変えただけ  
   バージョン履歴 0  
