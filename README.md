@@ -1,4 +1,6 @@
 # urakil
+![](https://img.shields.io/github/license/HaguraHikaru/urakil)
+
 URLを短縮させるCLIソフトウェア
 
 ## Description
