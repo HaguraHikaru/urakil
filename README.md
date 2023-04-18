@@ -9,20 +9,20 @@ CLIで動作させ,オプションによって複数のURLを一括で変換で�
 標準入出力でURLを受け取る.
 
 ## 使い方
-Usage: 
-    urakil [OPTIONS] [FILE] 
-    urakil <SUBCOMMAND> 
-
-OPTIONS: 
-  -f, --input-file 
-      ファイルを指定し,変換したURLを標準出力 
+Usage:  
+    urakil [OPTIONS] [FILE]   
+    urakil <SUBCOMMAND>  
+  
+OPTIONS:  
+  -f, --input-file  
+      ファイルを指定し,変換したURLを標準出力  
    
-  --help 
-      ヘルプの表示 
+  --help  
+      ヘルプの表示  
  
 ## インストール方法 
-  git clone 
-  Makefile 
+  git clone  
+  Makefile  
 
 ## プロジェクトについて
   開発者 HaguraHikaru   
