@@ -20,8 +20,8 @@ CLIで動作させ,オプションによって複数のURLを一括で変換で�
       --help  
           ヘルプの表示  
 ## インストール方法 
-  git clone  
-  Makefile  
+      git clone git@github.com:HaguraHikaru/urakil.git   
+      Makefile  
 
 ## プロジェクトについて
   開発者 HaguraHikaru   
