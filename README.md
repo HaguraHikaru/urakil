@@ -23,6 +23,7 @@ CLIで動作させ,オプションによって複数のURLを一括で変換で�
 ## インストール方法 
 GitHubからコードをダウンロードする  
     git clone git@github.com:HaguraHikaru/urakil.git  
+  
 ダウンロードしたファイルurakilに移動しビルドコマンドを入力  
     Makefile  
 
