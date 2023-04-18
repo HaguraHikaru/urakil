@@ -10,7 +10,7 @@ CLIで動作させ,オプションによって複数のURLを一括で変換で�
 
 ## 使い方
 
-    Usage:  
+    USAGE:  
         urakil [OPTIONS] [FILE]   
         urakil <SUBCOMMAND>  
   
