@@ -27,8 +27,11 @@ GitHubからコードをダウンロードする
     `Makefile`  
 
 # 😄プロジェクトについて
-  開発者 HaguraHikaru   
-  ライセンス MIT LICENSE   
+  ## 開発者
+  HaguraHikaru   
+  ## ライセンス  
+  MIT LICENSE   
+  ![](https://img.shields.io/github/license/HaguraHikaru/urakil)
   ## アイコン 
   遺伝子組み換えのようなものをイメージ   
    <img src="icon.svg" width="20%" />  
