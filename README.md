@@ -15,10 +15,14 @@ Bit.lyなどURLを短縮させるWebサービスがあるが,Webブラウザか�
         urakil [OPTIONS] [FILE]  
                   
     OPTIONS:  
-      -f, --input-file  
-          ファイルを指定し,変換したURLを標準出力  
-      --help  
+      -h --help  
           ヘルプの表示  
+      -v --version  
+          バージョン確認
+      -f, --input-file  
+          ファイルを指定し,変換したURLを一括で標準出力  
+
+      
 # ✈️インストール方法 
 GitHubからコードをダウンロードする  
     `git clone git@github.com:HaguraHikaru/urakil.git`  
