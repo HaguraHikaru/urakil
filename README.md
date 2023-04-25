@@ -1,11 +1,9 @@
 # urakil
-[![Coverage Status](https://coveralls.io/repos/github/HaguraHikaru/urakil/badge.svg?branch=main)](https://coveralls.io/github/HaguraHikaru/urakil?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/HaguraHikaru/urakil/badge.svg?branch=main)](https://coveralls.io/github/HaguraHikaru/urakil?branch=main) 
+[![Go Report Card](https://goreportcard.com/badge/github.com/HaguraHikaru/urakil)](https://goreportcard.com/report/github.com/HaguraHikaru/urakil) 
+[![codebeat badge](https://codebeat.co/badges/85e23949-4905-4960-8ea9-cf87f2f2f708)](https://codebeat.co/projects/github-com-hagurahikaru-urakil-main)  
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/HaguraHikaru/urakil)](https://goreportcard.com/report/github.com/HaguraHikaru/urakil)
-
-[![codebeat badge](https://codebeat.co/badges/85e23949-4905-4960-8ea9-cf87f2f2f708)](https://codebeat.co/projects/github-com-hagurahikaru-urakil-main)
-
-![](https://img.shields.io/github/license/HaguraHikaru/urakil)
+![](https://img.shields.io/github/license/HaguraHikaru/urakil)  
 
 URLを短縮させるCLIソフトウェア
 
