@@ -31,7 +31,7 @@ Bit.lyなどURLを短縮させるWebサービスがあるが,Webブラウザか�
 GitHubからコードをダウンロードする  
     `git clone git@github.com:HaguraHikaru/urakil.git`  
   
-ダウンロードしたファイルurakilに移動しビルドコマンドを入力  
+urakilに移動しビルドコマンドを入力  
     `Makefile`  
 
 # 😄プロジェクトについて
