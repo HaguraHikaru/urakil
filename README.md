@@ -1,4 +1,5 @@
 # urakil
+[![codebeat badge](https://codebeat.co/badges/85e23949-4905-4960-8ea9-cf87f2f2f708)](https://codebeat.co/projects/github-com-hagurahikaru-urakil-main)
 ![](https://img.shields.io/github/license/HaguraHikaru/urakil)
 
 URLを短縮させるCLIソフトウェア
