@@ -1,3 +1,3 @@
-module github.com/HaguraHikaru
+module github.com/HaguraHikaru/urakil
 
 go 1.20
