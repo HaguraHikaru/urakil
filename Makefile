@@ -1,11 +1,11 @@
 PACKAGE_LIST := $(shell go list ./...)
 VERSION := 0.1.2
-NAME := urleap
+NAME := urakil
 DIST := $(NAME)-$(VERSION)
 
 
 urakil: coverage.out
-go build -o urleap $(PACKAGE_LIST)
+go build -o urakil $(PACKAGE_LIST)
 
 coverage.out:
 go test -covermode=count -coverprofile=coverage.out $(PACKAGE_LIST)
