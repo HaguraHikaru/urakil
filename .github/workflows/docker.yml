@@ -56,5 +56,5 @@ jobs:
           file: Dockerfile
           platforms: linux/amd64,linux/arm64
           tags: |
-            ghcr.io/HaguraHikaru/urakilp:${{ steps.vars.outputs.tag }}
+            ghcr.io/HaguraHikaru/urakil:${{ steps.vars.outputs.tag }}
             ghcr.io/HaguraHikaru/urakil:latest
