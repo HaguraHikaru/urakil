@@ -1,17 +1,16 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
-	// "io"
+	"io"
+	"log"
+	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 
 	flag "github.com/spf13/pflag"
-
-	// "log"
-	// "net/http"
-	// "strings"
-	"bufio"
 )
 
 const VERSION = "0.1.3"
@@ -45,28 +44,32 @@ func fileRead(fileName *string) []string {
 	return urls
 }
 
-func bitlyRequest(opts *options, long_url *string) {
+func bitlyRequest(opts *options, long_url *string) ([]byte, error) {
 	fmt.Printf("long_url: %s\n", *long_url)
-	/*
-		json := fmt.Sprintf(`{"long_url": "%s", "domain": "bit.ly"}`, *long_url)
-		requestBody := strings.NewReader(json)
-		request, err := http.NewRequest("POST", "https://api-ssl.bitly.com/v4/shorten", requestBody)
-		if err != nil {
-			log.Fatal(err)
-		}
-		request.Header.Add("Authorization", fmt.Sprintf("Bearer %s", opts.token))
-		request.Header.Add("Content-Type", "application/json")
-		client := &http.Client{}
-		response, err := client.Do(request)
-		if err != nil {
-			log.Fatal(err)
-		}
-		defer response.Body.Close()
-		data, err := io.ReadAll(response.Body)
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Printf("%s\n", data)*/
+	//data := "test"
+
+	json := fmt.Sprintf(`{"long_url": "%s", "domain": "bit.ly"}`, *long_url)
+	requestBody := strings.NewReader(json)
+	request, err := http.NewRequest("POST", "https://api-ssl.bitly.com/v4/shorten", requestBody)
+	if err != nil {
+		//log.Fatal(err)
+		return nil, err
+	}
+	request.Header.Add("Authorization", fmt.Sprintf("Bearer %s", opts.token))
+	request.Header.Add("Content-Type", "application/json")
+	client := &http.Client{}
+	response, err := client.Do(request)
+	if err != nil {
+		//log.Fatal(err)
+		return nil, err
+	}
+	defer response.Body.Close()
+	data, err := io.ReadAll(response.Body)
+	if err != nil {
+		//log.Fatal(err)
+		return nil, err
+	}
+	return data, err
 }
 
 func buildOptions(args []string) (*options, *flag.FlagSet) {
@@ -79,7 +82,6 @@ func buildOptions(args []string) (*options, *flag.FlagSet) {
 	flags.BoolVarP(&opts.input_file, "input_file", "f", false, "ファイルを指定し,変換したURLを一括で標準出力")
 	flags.BoolVarP(&opts.help, "help", "h", false, "ヘルプの表示")
 	flags.BoolVarP(&opts.version, "version", "v", false, "バージョン確認")
-	fmt.Println(flags)
 	return opts, flags
 }
 
@@ -88,7 +90,13 @@ func perform(opts *options, args []string) *UrakilError {
 		fmt.Printf("Token: %s\n", opts.token)
 	}
 	for _, long_url := range args {
-		bitlyRequest(opts, &long_url)
+		data, err := bitlyRequest(opts, &long_url)
+		if opts != nil {
+			log.Fatal(err)
+		} else {
+			fmt.Printf("%s\n", data)
+		}
+
 	}
 	return nil
 }
@@ -129,6 +137,7 @@ func goMain(args []string) int {
 		fmt.Println(err.Error())
 		return err.statusCode
 	}
+
 	return 0
 }
 
@@ -146,7 +155,7 @@ OPTIONS
 	-f, --input-file    ファイルを指定し,変換したURLを一括で標準出力 
 ARGUMENT
 URL     specify the url for shortening. this arguments accept multiple values.
-	if no arguments were specified, urleap prints the list of available shorten urls.`, prog)
+	if no arguments were specified, urakil prints the list of available shorten urls.`, prog)
 }
 
 type UrakilError struct {
