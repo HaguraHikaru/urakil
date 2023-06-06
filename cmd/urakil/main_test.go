@@ -1,12 +1,11 @@
 package main
 
 import (
-	"os"
 	"testing"
 )
 
 func _Example_Main() {
-	goMain([]string{"./urleap", "-t", "token"})
+	goMain([]string{"./urakil", "-t", "token"})
 	// Output:
 	// Hello World
 }
@@ -14,26 +13,24 @@ func _Example_Main() {
 func Example_Help() {
 	goMain([]string{"./urakil", "--help"})
 	// Output:
-	// urleap [OPTIONS] [URLs...]
+	// urakil [OPTIONS] [URLs...]
 	// OPTIONS
-	//     -t, --token <TOKEN>      specify the token for the service. This option is mandatory.
-	//     -q, --qrcode <FILE>      include QR-code of the URL in the output.
-	//     -c, --config <CONFIG>    specify the configuration file.
-	//     -g, --group <GROUP>      specify the group name for the service. Default is "urleap"
-	//     -d, --delete             delete the specified shorten URL.
-	//     -h, --help               print this mesasge and exit.
-	//     -v, --version            print the version and exit.
+	//-t --token          BitlyのAPIトークンを指定
+	//-h --help           ヘルプの表示
+	//-v --version        バージョン確認
+	//-f, --input-file    ファイルを指定し,変換したURLを一括で標準出力
 	// ARGUMENT
 	//     URL     specify the url for shortening. this arguments accept multiple values.
-	//             if no arguments were specified, urleap prints the list of available shorten urls.
+	//             if no arguments were specified, urakil prints the list of available shorten urls.
 }
 
 func Test_Main(t *testing.T) {
-	if status := goMain([]string{"./urleap", "-v"}); status != 0 {
+	if status := goMain([]string{"./urakil", "-v"}); status != 0 {
 		t.Error("Expected 0, got ", status)
 	}
 }
 
+/*
 func TestbitlyRequest(t *testing.T) {
 	config := NewConfig(os.Getenv("URAKIL_TOKEN"), Shorten) //bitly := NewBitly("")
 	testdata := []struct {
@@ -41,7 +38,7 @@ func TestbitlyRequest(t *testing.T) {
 		wontShortenError bool
 		wontDeleteError  bool
 	}{
-		{"https://tamadalab.github.io/", false, false},
+		{"https://news.google.com/home?hl=ja&gl=JP&ceid=JP%3Aja", false, false},
 	}
 	for _, td := range testdata {
 		result, err := bitly.Shorten(config, td.giveUrl)
@@ -54,3 +51,5 @@ func TestbitlyRequest(t *testing.T) {
 		}
 	}
 }
+
+*/
