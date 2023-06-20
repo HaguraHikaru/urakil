@@ -1,0 +1,9 @@
+[submodule "docs/themes/Blackburn"]
+	path = docs/themes/Blackburn
+	url = https://github.com/yoshiharuyamashita/blackburn.git
+[submodule "docs/themes/learn"]
+	path = docs/themes/learn
+	url = https://github.com/matcornic/hugo-theme-learn.git
+[submodule "docs/themes/PaperMod"]
+	path = docs/themes/PaperMod
+	url = https://github.com/adityatelange/hugo-PaperMod.git
