@@ -32,7 +32,7 @@ func Test_Main(t *testing.T) {
 
 /*
 func TestbitlyRequest(t *testing.T) {
-	config := NewConfig(os.Getenv("URAKIL_TOKEN"), Shorten) //bitly := NewBitly("")
+	config := NewConfig(os.Getenv("BITLY_TOKEN"), Shorten) //bitly := NewBitly("")
 	testdata := []struct {
 		giveUrl          string
 		wontShortenError bool
@@ -40,6 +40,7 @@ func TestbitlyRequest(t *testing.T) {
 	}{
 		{"https://news.google.com/home?hl=ja&gl=JP&ceid=JP%3Aja", false, false},
 	}
+
 	for _, td := range testdata {
 		result, err := bitly.Shorten(config, td.giveUrl)
 		if (err == nil) != td.wontShortenError {
