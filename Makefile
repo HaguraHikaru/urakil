@@ -3,10 +3,10 @@ VERSION := 0.1.16
 NAME := urakil
 DIST := $(NAME)-$(VERSION)
 
-urakil: coverage.out
-	go build -o urakil $(PACKAGE_LIST)
+urakil: coverage.out cmd/urakil/main.go *.go
+	go build -o urakil cmd/urakil/main.go
 
-coverage.out:
+coverage.out: cmd/urakil/main_test.go
 	go test -covermode=count \
 		-coverprofile=coverage.out $(PACKAGE_LIST)
 

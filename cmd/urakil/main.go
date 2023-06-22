@@ -3,21 +3,14 @@ package main
 import (
 	"bufio"
 	"fmt"
-	//"io"
-	//"io/ioutil"
-	//"log"
-	//"net/http"
 	"os"
 	"path/filepath"
-	//"strings"
 
-	flag "github.com/spf13/pflag"
 	"github.com/HaguraHikaru/urakil"
+	flag "github.com/spf13/pflag"
 )
 
 const VERSION = "0.1.4"
-
-//const defURL = "https://news.google.com/home?hl=ja&gl=JP&ceid=JP%3Aja"
 
 func versionString(args []string) string {
 	prog := "urakil"
@@ -40,8 +33,8 @@ OPTIONS
 	-v --version        バージョン確認
 	-f, --input-file    ファイルを指定し,変換したURLを一括で標準出力 
 ARGUMENT
-URL     specify the url for shortening. this arguments accept multiple values.
-	if no arguments were specified, urakil prints the list of available shorten urls.`, prog)
+URL		短縮したいURLを指定します。引数は複数のURLを指定することができます。
+		引数が指定されていない場合、過去に作成した短縮済みURLの一覧を出力します。`, prog)
 }
 
 type UrakilError struct {
@@ -53,22 +46,12 @@ func (e UrakilError) Error() string {
 	return e.message
 }
 
-/*
-type options struct {
-	token string
-	//qrcode string
-	//config string
-	input_file bool
-	help       bool
-	version    bool
-}*/
-
 type flags struct {
-	deleteFlag    bool
-	listGroupFlag bool
-	helpFlag      bool
-	versionFlag   bool
-	input_fileFlag    bool
+	deleteFlag     bool
+	listGroupFlag  bool
+	helpFlag       bool
+	versionFlag    bool
+	input_fileFlag bool
 }
 
 type runOpts struct {
@@ -104,33 +87,20 @@ func (opts *options) mode(args []string) urakil.Mode {
 		return urakil.Shorten
 	}
 }
-/*
-func buildOptions(args []string) (*options, *flag.FlagSet) {
-	opts := &options{}
-	flags := flag.NewFlagSet(args[0], flag.ContinueOnError)
-	flags.Usage = func() { fmt.Println(helpMessage(args)) }
-	flags.StringVarP(&opts.token, "token", "t", "", "specify the token for the service. This option is mandatory")
-	//flags.StringVarP(&opts.qrcode, "qrcode", "q", "", "include QR-code of the URL in the output.")
-	//flags.StringVarP(&opts.config, "config", "c", "", "specify the configuration file")
-	flags.BoolVarP(&opts.input_file, "input_file", "f", false, "ファイルを指定し,変換したURLを一括で標準出力")
-	flags.BoolVarP(&opts.help, "help", "h", false, "ヘルプの表示")
-	flags.BoolVarP(&opts.version, "version", "v", false, "バージョン確認")
-	return opts, flags
-}*/
 
 func buildOptions(args []string) (*options, *flag.FlagSet) {
 	opts := newOptions()
 	flags := flag.NewFlagSet(args[0], flag.ContinueOnError)
 	flags.Usage = func() { fmt.Println(helpMessage(args)) }
 	flags.StringVarP(&opts.runOpt.token, "token", "t", "", "BitlyのAPIトークンを指定します。このオプションは必須です")
-	flags.StringVarP(&opts.runOpt.qrcode, "qrcode", "q", "", "include QR-code of the URL in the output.")
-	flags.StringVarP(&opts.runOpt.config, "config", "c", "", "specify the configuration file.")
-	flags.StringVarP(&opts.runOpt.group, "group", "g", "", "specify the group name for the service. Default is \"urleap\"")
+	//flags.StringVarP(&opts.runOpt.qrcode, "qrcode", "q", "", "include QR-code of the URL in the output.")
+	//flags.StringVarP(&opts.runOpt.config, "config", "c", "", "specify the configuration file.")
+	//flags.StringVarP(&opts.runOpt.group, "group", "g", "", "specify the group name for the service. Default is \"urakil\"")
 	flags.BoolVarP(&opts.flagSet.listGroupFlag, "list-group", "L", false, "list the groups. This is hidden option.")
 	flags.BoolVarP(&opts.flagSet.deleteFlag, "delete", "d", false, "delete the specified shorten URL.")
 	flags.BoolVarP(&opts.flagSet.helpFlag, "help", "h", false, "ヘルプの表示")
 	flags.BoolVarP(&opts.flagSet.versionFlag, "version", "v", false, "バージョン確認")
-	flags.BoolVarP(&opts.flagSet.input_fileFlag, "input_file", "f", false, "ファイルを指定し,変換したURLを一括で標準出力")
+	flags.BoolVarP(&opts.flagSet.input_fileFlag, "input-file", "f", false, "ファイルを指定し,変換したURLを一括で標準出力")
 	return opts, flags
 }
 
@@ -157,8 +127,6 @@ func parseOptions(args []string) (*options, []string, *UrakilError) {
 	return opts, flags.Args(), nil
 }
 
-
-
 func fileRead(fileName *string) []string {
 	urls := []string{}
 	readFile, err := os.Open(*fileName)
@@ -174,56 +142,8 @@ func fileRead(fileName *string) []string {
 		urls = append(urls, fileScanner.Text())
 	}
 	readFile.Close()
-	fmt.Println(urls)
 	return urls
 }
-/*
-func retrieveLinks(opts *options) ([]byte, error) {
-	request, err := http.NewRequest("GET", "https://api-ssl.bitly.com/v4/bitlinks/bit.ly/12a4b6c", nil)
-	if err != nil {
-		return nil, err
-	}
-	request.Header.Add("Authorization", fmt.Sprintf("Bearer %s", opts.token))
-	client := &http.Client{}
-	response, err := client.Do(request)
-	if err != nil {
-		return nil, err
-	}
-	defer response.Body.Close()
-	data, err := ioutil.ReadAll(response.Body)
-	if err != nil {
-		log.Fatal(err)
-	}
-	return data, err
-
-}*/
-
-/*
-func bitlyRequest(opts *options, long_url *string) ([]byte, error) {
-	//fmt.Printf("long_url: %s\n", *long_url)
-	json := fmt.Sprintf(`{"long_url": "%s", "domain": "bit.ly"}`, *long_url)
-	requestBody := strings.NewReader(json)
-	request, err := http.NewRequest("POST", "https://api-ssl.bitly.com/v4/shorten", requestBody)
-	if err != nil {
-		//log.Fatal(err)
-		return nil, err
-	}
-	request.Header.Add("Authorization", fmt.Sprintf("Bearer %s", opts.token))
-	request.Header.Add("Content-Type", "application/json")
-	client := &http.Client{}
-	response, err := client.Do(request)
-	if err != nil {
-		//log.Fatal(err)
-		return nil, err
-	}
-	defer response.Body.Close()
-	data, err := io.ReadAll(response.Body)
-	if err != nil {
-		//log.Fatal(err)
-		return nil, err
-	}
-	return data, err
-}*/
 
 func shortenEach(bitly *urakil.Bitly, config *urakil.Config, url string) error {
 	result, err := bitly.Shorten(config, url)
@@ -292,24 +212,6 @@ func perform(opts *options, args []string) *UrakilError {
 	}
 	return nil
 }
-
-
-/*
-func perform(opts *options, args []string) *UrakilError {
-	if opts != nil {
-		fmt.Printf("Token: %s\n", opts.token)
-	}
-	for _, long_url := range args {
-		data, err := bitlyRequest(opts, &long_url)
-		if opts != nil {
-			log.Fatal(err)
-		} else {
-			fmt.Printf("%s\n", data)
-		}
-
-	}
-	return nil
-}*/
 
 func makeError(err error, status int) *UrakilError {
 	if err == nil {
