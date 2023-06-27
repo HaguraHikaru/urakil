@@ -1,4 +1,4 @@
-package lib
+package urakil
 
 import (
 	"os"
@@ -12,14 +12,14 @@ func GenerateCompletion(flag *pflag.FlagSet) error {
 		Use: "completions",
 	}
 	command.Flags().AddFlagSet(flag)
-	os.Mkdir("completions/", 0755)
-	os.Mkdir("completions/bash", 0755)
-	os.Mkdir("completions/zsh", 0755)
-	os.Mkdir("completions/fish", 0755)
-	os.Mkdir("completions/powershell", 0755)
-	command.GenBashCompletionFileV2("completions/bash/urakil", true)
-	command.GenZshCompletionFile("completions/zsh/urakil")
-	command.GenFishCompletionFile("completions/fish/urakil", true)
-	command.GenPowerShellCompletionFile("completions/ps1/urakil")
+	os.Mkdir("cmd/urakil/completions/", 0755)
+	os.Mkdir("cmd/urakil/completions/bash", 0755)
+	os.Mkdir("cmd/urakil/completions/zsh", 0755)
+	os.Mkdir("cmd/urakil/completions/fish", 0755)
+	os.Mkdir("cmd/urakil/completions/powershell", 0755)
+	command.GenBashCompletionFileV2("cmd/urakil/completions/bash/urakil", true)
+	command.GenZshCompletionFile("cmd/urakil/completions/zsh/urakil")
+	command.GenFishCompletionFile("cmd/urakil/completions/fish/urakil", true)
+	command.GenPowerShellCompletionFile("cmd/urakil/completions/ps1/urakil")
 	return nil
 }

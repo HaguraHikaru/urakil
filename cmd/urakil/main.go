@@ -95,6 +95,9 @@ func buildOptions(args []string) (*options, *flag.FlagSet) {
 	flags := flag.NewFlagSet(args[0], flag.ContinueOnError)
 	flags.Usage = func() { fmt.Println(helpMessage(args)) }
 
+	flags.BoolVarP(&completions, "generate-completions", "", false, "generate completions")
+	flags.MarkHidden("generate-completions")
+
 	flags.StringVarP(&opts.runOpt.token, "token", "t", "", "BitlyのAPIトークンを指定します。このオプションは必須です")
 	//flags.StringVarP(&opts.runOpt.qrcode, "qrcode", "q", "", "include QR-code of the URL in the output.")
 	//flags.StringVarP(&opts.runOpt.config, "config", "c", "", "specify the configuration file.")
@@ -104,10 +107,6 @@ func buildOptions(args []string) (*options, *flag.FlagSet) {
 	flags.BoolVarP(&opts.flagSet.helpFlag, "help", "h", false, "ヘルプの表示")
 	flags.BoolVarP(&opts.flagSet.versionFlag, "version", "v", false, "バージョン確認")
 	flags.BoolVarP(&opts.flagSet.input_fileFlag, "input-file", "f", false, "ファイルを指定し,変換したURLを一括で標準出力")
-
-	flags.BoolVarP(&completions, "generate-completions", "", false, "generate completions")
-	flags.MarkHidden("generate-completions")
-
 	return opts, flags
 }
 
@@ -115,7 +114,7 @@ func parseOptions(args []string) (*options, []string, *UrakilError) {
 	opts, flags := buildOptions(args)
 	flags.Parse(args[1:])
 	if completions {
-		GenerateCompletion(flags)
+		urakil.GenerateCompletion(flags)
 		return nil, nil, &UrakilError{statusCode: 0, message: ""}
 	}
 	if opts.flagSet.helpFlag {
