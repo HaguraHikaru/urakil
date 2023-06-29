@@ -20,6 +20,8 @@ Bit.lyなどURLを短縮させるWebサービスがあるが,Webブラウザか�
         urakil [OPTIONS] [FILE]  
                   
     OPTIONS:  
+      -t --token  
+          BitlyのAPIトークンを指定します。このオプションは必須です  
       -h --help  
           ヘルプの表示  
       -v --version  
