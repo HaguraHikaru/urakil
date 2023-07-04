@@ -2,12 +2,11 @@
 title = "Urakil マニュアル"
 +++
 
-
-
 # urakil
 [![Coverage Status](https://coveralls.io/repos/github/HaguraHikaru/urakil/badge.svg?branch=main)](https://coveralls.io/github/HaguraHikaru/urakil?branch=main) 
 [![Go Report Card](https://goreportcard.com/badge/github.com/HaguraHikaru/urakil)](https://goreportcard.com/report/github.com/HaguraHikaru/urakil) 
 [![codebeat badge](https://codebeat.co/badges/85e23949-4905-4960-8ea9-cf87f2f2f708)](https://codebeat.co/projects/github-com-hagurahikaru-urakil-main)  
+[![DOI](https://sandbox.zenodo.org/badge/627760240.svg)](https://sandbox.zenodo.org/badge/latestdoi/627760240)
 
 ![](https://img.shields.io/github/license/HaguraHikaru/urakil)  
 
@@ -25,13 +24,17 @@ Bit.lyなどURLを短縮させるWebサービスがあるが,Webブラウザか�
         urakil [OPTIONS] [FILE]  
                   
     OPTIONS:  
-      -t --token
-          BitlyのAPIトークンを指定します。このオプションは必須です
+      -t --token  
+          BitlyのAPIトークンを指定します。このオプションは必須です  
+      -L --list-group  
+          グループIDを取得  
+      -d --delete  
+          短縮したURLを削除  
       -h --help  
           ヘルプの表示  
       -v --version  
           バージョン確認
-      -f --input-file  
+      -f, --input-file  
           ファイルを指定し,変換したURLを一括で標準出力  
 
       
@@ -49,7 +52,7 @@ urakilに移動しビルドコマンドを入力
   MIT LICENSE   
   ![](https://img.shields.io/github/license/HaguraHikaru/urakil)
   ## アイコン 
-  遺伝子組み換えのようなものをイメージ 
-  ![アイコン](icon.jpg)
+  遺伝子組み換えのようなものをイメージ   
+   ![アイコン](icon.jpg) 
   ## 名前の由来  
-  Hikaruを逆順にし, 最後をlに変えただけ  
+  Hikaruを逆順にし, 最後をlに変えただけ 
