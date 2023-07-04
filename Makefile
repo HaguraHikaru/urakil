@@ -1,12 +1,12 @@
 PACKAGE_LIST := $(shell go list ./...)
-VERSION := 0.1.16
+VERSION := 0.1.5
 NAME := urakil
 DIST := $(NAME)-$(VERSION)
 
 urakil: coverage.out cmd/urakil/main.go *.go
-	go build -o urakil cmd/urakil/main.go
+	go build -o urakil cmd/$(NAME)/main.go cmd/$(NAME)/generate_completion.go
 
-coverage.out: cmd/urakil/main_test.go
+coverage.out: cmd/$(NAME)/main_test.go
 	go test -covermode=count \
 		-coverprofile=coverage.out $(PACKAGE_LIST)
 
@@ -18,7 +18,7 @@ docker: urakil
 # refer from https://pod.hatenablog.com/entry/2017/06/13/150342
 define _createDist
 	mkdir -p dist/$(1)_$(2)/$(DIST)
-	GOOS=$1 GOARCH=$2 go build -o dist/$(1)_$(2)/$(DIST)/$(NAME)$(3) cmd/$(NAME)/main.go
+	GOOS=$1 GOARCH=$2 go build -o dist/$(1)_$(2)/$(DIST)/$(NAME)$(3) cmd/$(NAME)/main.go cmd/$(NAME)/generate_completion.go
 	cp -r README.md LICENSE dist/$(1)_$(2)/$(DIST)
 #	cp -r docs/public dist/$(1)_$(2)/$(DIST)/docs
 	tar cfz dist/$(DIST)_$(1)_$(2).tar.gz -C dist/$(1)_$(2) $(DIST)
