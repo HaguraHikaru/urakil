@@ -1,4 +1,4 @@
-package urakil
+package main
 
 import (
 	"os"
