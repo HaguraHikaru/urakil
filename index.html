@@ -2,7 +2,7 @@
 <html lang="ja" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.113.0"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.114.1"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -130,6 +130,8 @@
 <a href="https://goreportcard.com/report/github.com/HaguraHikaru/urakil"><img loading="lazy" src="https://goreportcard.com/badge/github.com/HaguraHikaru/urakil" alt="Go Report Card"  />
 </a>
 <a href="https://codebeat.co/projects/github-com-hagurahikaru-urakil-main"><img loading="lazy" src="https://codebeat.co/badges/85e23949-4905-4960-8ea9-cf87f2f2f708" alt="codebeat badge"  />
+</a><br>
+<a href="https://sandbox.zenodo.org/badge/latestdoi/627760240"><img loading="lazy" src="https://sandbox.zenodo.org/badge/627760240.svg" alt="DOI"  />
 </a></p>
 <p><img loading="lazy" src="https://img.shields.io/github/license/HaguraHikaru/urakil" alt=""  />
 </p>
@@ -144,13 +146,17 @@ Bit.lyなどURLを短縮させるWebサービスがあるが,Webブラウザか�
     urakil [OPTIONS] [FILE]  
               
 OPTIONS:  
-  -t --token
-      BitlyのAPIトークンを指定します。このオプションは必須です
+  -t --token  
+      BitlyのAPIトークンを指定します。このオプションは必須です  
+  -L --list-group  
+      グループIDを取得  
+  -d --delete  
+      短縮したURLを削除  
   -h --help  
       ヘルプの表示  
   -v --version  
       バージョン確認
-  -f --input-file  
+  -f, --input-file  
       ファイルを指定し,変換したURLを一括で標準出力  
 </code></pre>
 <h1 id="インストール方法">✈️インストール方法<a hidden class="anchor" aria-hidden="true" href="#インストール方法">#</a></h1>
@@ -166,7 +172,7 @@ OPTIONS:
 <img loading="lazy" src="https://img.shields.io/github/license/HaguraHikaru/urakil" alt=""  />
 </p>
 <h2 id="アイコン">アイコン<a hidden class="anchor" aria-hidden="true" href="#アイコン">#</a></h2>
-<p>遺伝子組み換えのようなものをイメージ
+<p>遺伝子組み換えのようなものをイメージ<br>
 <img loading="lazy" src="icon.jpg" alt="アイコン"  />
 </p>
 <h2 id="名前の由来">名前の由来<a hidden class="anchor" aria-hidden="true" href="#名前の由来">#</a></h2>
