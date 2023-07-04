@@ -114,7 +114,7 @@ func parseOptions(args []string) (*options, []string, *UrakilError) {
 	opts, flags := buildOptions(args)
 	flags.Parse(args[1:])
 	if completions {
-		urakil.GenerateCompletion(flags)
+		GenerateCompletion(flags)
 		return nil, nil, &UrakilError{statusCode: 0, message: ""}
 	}
 	if opts.flagSet.helpFlag {
