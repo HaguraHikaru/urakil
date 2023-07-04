@@ -22,6 +22,10 @@ Bit.lyなどURLを短縮させるWebサービスがあるが,Webブラウザか�
     OPTIONS:  
       -t --token  
           BitlyのAPIトークンを指定します。このオプションは必須です  
+      -L --list-group  
+          グループIDを取得  
+      -d --delete  
+          短縮したURLを削除  
       -h --help  
           ヘルプの表示  
       -v --version  
