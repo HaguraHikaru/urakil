@@ -10,7 +10,7 @@ import (
 	flag "github.com/spf13/pflag"
 )
 
-const VERSION = "0.1.4"
+const VERSION = "0.1.5"
 
 func versionString(args []string) string {
 	prog := "urakil"
@@ -27,14 +27,16 @@ func helpMessage(args []string) string {
 	}
 	return fmt.Sprintf(`%s [OPTIONS] [URLs...]
 OPTIONS
-	OPTIONS:  
+	OPTIONS:
 	-t --token          BitlyのAPIトークンを指定します。このオプションは必須です
-	-h --help           ヘルプの表示  
+	-L --list-group     グループIDを取得
+	-d --delete         短縮したURLを削除
+	-h --help           ヘルプの表示
 	-v --version        バージョン確認
-	-f, --input-file    ファイルを指定し,変換したURLを一括で標準出力 
+	-f --input-file     ファイルを指定し,変換したURLを一括で標準出力
 ARGUMENT
-URL		短縮したいURLを指定します。引数は複数のURLを指定することができます。
-		引数が指定されていない場合、過去に作成した短縮済みURLの一覧を出力します。`, prog)
+URL		短縮したいURLを指定します。引数は複数のURLを指定することができます
+		引数が指定されていない場合、過去に作成した短縮済みURLの一覧を出力します`, prog)
 }
 
 type UrakilError struct {
@@ -102,8 +104,8 @@ func buildOptions(args []string) (*options, *flag.FlagSet) {
 	//flags.StringVarP(&opts.runOpt.qrcode, "qrcode", "q", "", "include QR-code of the URL in the output.")
 	//flags.StringVarP(&opts.runOpt.config, "config", "c", "", "specify the configuration file.")
 	//flags.StringVarP(&opts.runOpt.group, "group", "g", "", "specify the group name for the service. Default is \"urakil\"")
-	flags.BoolVarP(&opts.flagSet.listGroupFlag, "list-group", "L", false, "list the groups. This is hidden option.")
-	flags.BoolVarP(&opts.flagSet.deleteFlag, "delete", "d", false, "delete the specified shorten URL.")
+	flags.BoolVarP(&opts.flagSet.listGroupFlag, "list-group", "L", false, "グループIDを取得")
+	flags.BoolVarP(&opts.flagSet.deleteFlag, "delete", "d", false, "短縮したURLを削除")
 	flags.BoolVarP(&opts.flagSet.helpFlag, "help", "h", false, "ヘルプの表示")
 	flags.BoolVarP(&opts.flagSet.versionFlag, "version", "v", false, "バージョン確認")
 	flags.BoolVarP(&opts.flagSet.input_fileFlag, "input-file", "f", false, "ファイルを指定し,変換したURLを一括で標準出力")
@@ -126,7 +128,7 @@ func parseOptions(args []string) (*options, []string, *UrakilError) {
 		return nil, nil, &UrakilError{statusCode: 0, message: ""}
 	}
 	if opts.runOpt.token == "" {
-		return nil, nil, &UrakilError{statusCode: 3, message: "no token was given"}
+		return nil, nil, &UrakilError{statusCode: 3, message: "トークンが与えられていません"}
 	}
 	if opts.flagSet.input_fileFlag {
 		fileName := flags.Args()[0]
