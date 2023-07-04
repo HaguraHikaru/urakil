@@ -12,14 +12,14 @@ func GenerateCompletion(flag *pflag.FlagSet) error {
 		Use: "completions",
 	}
 	command.Flags().AddFlagSet(flag)
-	os.Mkdir("/completions/", 0755)
-	os.Mkdir("/completions/bash", 0755)
-	os.Mkdir("/completions/zsh", 0755)
-	os.Mkdir("/completions/fish", 0755)
-	os.Mkdir("/completions/powershell", 0755)
-	command.GenBashCompletionFileV2("/completions/bash/urakil", true)
-	command.GenZshCompletionFile("/completions/zsh/urakil")
-	command.GenFishCompletionFile("/completions/fish/urakil", true)
-	command.GenPowerShellCompletionFile("/completions/ps1/urakil")
+	os.Mkdir("completions/", 0755)
+	os.Mkdir("completions/bash", 0755)
+	os.Mkdir("completions/zsh", 0755)
+	os.Mkdir("completions/fish", 0755)
+	os.Mkdir("completions/powershell", 0755)
+	command.GenBashCompletionFileV2("completions/bash/urakil", true)
+	command.GenZshCompletionFile("completions/zsh/urakil")
+	command.GenFishCompletionFile("completions/fish/urakil", true)
+	command.GenPowerShellCompletionFile("completions/ps1/urakil")
 	return nil
 }
