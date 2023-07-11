@@ -35,11 +35,8 @@ Bit.lyなどURLを短縮させるWebサービスがあるが,Webブラウザか�
 
       
 # ✈️インストール方法 
-GitHubからコードをダウンロードする  
-    `git clone git@github.com:HaguraHikaru/urakil.git`  
-  
-urakilに移動しビルドコマンドを入力  
-    `Makefile`  
+🍺 Homebrew  
+    `brew install HaguraHikaru/tap/urakil`  
 
 # 😄プロジェクトについて
   ## 開発者
