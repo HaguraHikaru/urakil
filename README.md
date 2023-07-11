@@ -15,6 +15,7 @@ Bit.lyなどURLを短縮させるWebサービスがあるが,Webブラウザか�
 
 
 # 📖使い方
+```sh
     USAGE:  
         urakil [OPTIONS] [URL...]
         urakil [OPTIONS] [FILE]  
@@ -32,11 +33,13 @@ Bit.lyなどURLを短縮させるWebサービスがあるが,Webブラウザか�
           バージョン確認
       -f, --input-file  
           ファイルを指定し,変換したURLを一括で標準出力  
-
+```
       
 # ✈️インストール方法 
 🍺 Homebrew      
-    ```brew install HaguraHikaru/tap/urakil ```   
+    ```sh
+    brew install HaguraHikaru/tap/urakil
+    ```   
               
 # 😄プロジェクトについて
   ## 開発者
