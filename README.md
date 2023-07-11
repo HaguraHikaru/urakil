@@ -35,7 +35,7 @@ Bit.lyなどURLを短縮させるWebサービスがあるが,Webブラウザか�
 
       
 # ✈️インストール方法 
-🍺 Homebrew  
+🍺 Homebrew   
     brew install HaguraHikaru/tap/urakil  
 
 # 😄プロジェクトについて
